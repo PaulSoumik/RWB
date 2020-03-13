@@ -46,6 +46,19 @@
                                 <label class="form-check-label" for="female">Female</label>
                             </div>
                         </div>
+                {% elif field.name == 'Dept' %}
+                    <div class="form-group">
+                            <label for="Dept">Department</label>
+                            <select name="Dept" size="1" single style="margin-left: 10px;">
+                                <option value="ee">Electrical</option>
+                                <option value="cse">CSE</option>
+                                <option value="ece">ECE</option>
+                                <option value="ce">CE</option>
+                                <option value="me">ME</option>
+                                <option value="mme">MME</option>
+                            </select>
+                    </div>
+
 
                     {% else %}
 
