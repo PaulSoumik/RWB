@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+
+
+    <section class="bg-light-gray">
+        <div class="container">
+            <h3 class="heading" style="padding-bottom: 50px;">Featured jobs</h3>
+            <div class="row featured align-items-stretch">
+                {% for job in jobs %}
+                    <div class="col-lg-4 mb-5 mb-lg-0" style="text-align: center;
+                        padding: 0px;
+                        padding-top: 30px;
+                        padding-bottom: 0px;
+                        margin-bottom: 6rem!important;
+                        margin-left: 10%;
+                        border-radius: 0.333rem;
+                        -webkit-box-shadow: 21px 14px 50px 5px rgba(0,0,0,0.1);
+                        -moz-box-shadow: 21px 14px 50px 5px rgba(0,0,0,0.1);
+                        box-shadow: 21px 14px 50px 5px rgba(0,0,0,0.1);" >
+                        <div class="box-image-text bg-visible full-height">
+                            <div class="top">
+                                <a href="#">
+                                    <div class="image">
+                                        <img src="{% static 'img/communication.png' %}" alt="" class="img-fluid" style="max-width: 150px;">
+                                    </div>
+                                    <div class="bg"></div>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h5><a href="{% url 'jobs:jobs-detail' job.id %}">{{ job.title }}</a></h5>
+                                <p class="featured__details"><i class="fa fa-map-marker job__location"></i>
+                                    {{ job.location }}
+                                    {% if job.type == '1' %}
+                                        <span class="badge featured-badge badge-success">Full time</span>
+                                    {% elif job.type == '2' %}
+                                        <span class="badge featured-badge badge-primary">Part time</span>
+                                    {% else %}
+                                        <span style="color: #ffffff;" class="badge featured-badge badge-warning">Internship</span>
+                                    {% endif %}
+                                </p>
+                                <p>{{ job.description | slice:100 }} <a style="text-decoration: none;color: unset;" href="{% url 'jobs:jobs-detail' job.id %}">...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section>
+ 
+    </section>
+    <section style="background-image: url({% static 'img/startup.jpg' %}); " class="section-divider">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Start searching for your new job now! </p>
+                    <p><a href="{% url 'jobs:jobs' %}" class="btn btn-light">See our job offers </a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

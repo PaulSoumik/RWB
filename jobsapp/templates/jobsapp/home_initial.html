@@ -1,0 +1,692 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Research Portal- NIT Durgapur</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link rel="icon" type="image/png" href="{% static "jobsapp/img/portal_short.ico" %}">
+  <!-- Favicons -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static "jobsapp/lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static "jobsapp/lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/animate/animate.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/ionicons/css/ionicons.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static "jobsapp/css/style.css" %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <a href="#intro" class="scrollto"><img src="{% static "jobsapp/img/portal_logo_big3.png" %}" alt="" width="130" height="300"></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <!--
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#services">Objectives</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          -->
+          <li><a href="#intro" class="scrollto"><img src="{% static "jobsapp/img/sb_logo.png" %}" alt="" width="90" height="40"></a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+      <div class="intro-img">
+        <img src="{% static "jobsapp/img/intro-img.svg" %}" alt="" class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+        <h2>Welcome to<br><span>Research Portal</span><br>NIT Durgapur</h2>
+        <div>
+          {% if request.user.is_authenticated %}
+            <a href="/home_initial" class="btn-get-started scrollto">Go to Dashboard</a>
+          {% else %}
+            <a href="{% url 'accounts:login' %}" class="btn-get-started scrollto">Faculty</a>
+            <a href="{% url 'accounts:login' %}" class="btn-services scrollto">Student</a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Objectives</h3>
+          <p>Our Mission Purpose</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">Centralised Research Database</a></h4>
+              <p class="description">Meet the demand for open access institutional repository and offer a central database for comprehensive research informations.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="">Showcasing research</a></h4>
+              <p class="description">To synchronize and showcase NIT Durgapur's research activities and to encourage more youth into it.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Ease for students</a></h4>
+              <p class="description">To provide students with an easy,intuitive and personalized web interface for facilitating access to informations of relevance and interests.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">Efficient administration</a></h4>
+              <p class="description">To smoothen the administrative workflow and enhance the impact of NIT Durgapur's research outputs.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+
+
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Why choose us?</h3>
+          <p>The only dedicated research related jobsapp of NIT Durgapur.</p>
+        </header>
+
+        <div class="row row-eq-height justify-content-center">
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-diamond"></i>
+              <div class="card-body">
+                <h5 class="card-title">Open for All</h5>
+                <p class="card-text">Both professors and scholars can view each other's area of interests.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-object-group"></i>
+              <div class="card-body">
+                <h5 class="card-title">Easy & compact design</h5>
+
+                <p class="card-text">A very user-friendly interface for easy access to all the services.</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fas fa-comment-alt"></i>
+              <div class="card-body">
+                <h5 class="card-title">Regular Updates</h5>
+                <p class="card-text">No chance of missing anything important from us.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">8</span>
+            <p>Departments</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">107</span>
+            <p>Areas of Interest</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">212</span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">124</span>
+            <p>Success Stories</p>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="testimonials" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Testimonials</h3>
+        </header>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="owl-carousel testimonials-carousel wow fadeInUp">
+
+              <div class="testimonial-item">
+                <img src="{% static "jobsapp/img/testimonial_b.png" %}" class="testimonial-img" alt="">
+                <h3>Anurag Sarkar</h3>
+                <h4>2nd year UG , Electrical Engineering</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="{% static "jobsapp/img/testimonial_g.jpg" %}" class="testimonial-img" alt="">
+                <h3>Sudeshna Goon</h3>
+                <h4>2nd year UG , Chemical Engineering</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="{% static "jobsapp/img/testimonial_b.png" %}" class="testimonial-img" alt="">
+                <h3>Anumoy Ganguly</h3>
+                <h4>3rd year UG , Metallurgical and Materials Engineering</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="{% static "jobsapp/img/testimonial_g.jpg" %}" class="testimonial-img" alt="">
+                <h3>Prateekee Chattejee</h3>
+                <h4>3rd year UG , Electrical Engineering</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </section><!-- #testimonials -->
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>From idea to installment, meet the people behind it!</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="{% static "jobsapp/img/aniq.jpg" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Aniq Ur Rahman</h4>
+                  <span>Founding Chair</span>
+                  <div class="social">
+                    <a href="mailto:aniqrah@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/aniq55"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/aniq55/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/monsij.jpg" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Monsij Biswal</h4>
+                  <span>Web Head</span>
+                  <div class="social">
+                    <a href="mailto:biswalmonsij@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/monsij98"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/monsij-biswal51/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/animesh.jpg" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Animesh Datta</h4>
+                  <span>Design Head</span>
+                  <div class="social">
+                    <a href="mailto:animesh.suman98@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/animeshdatts"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/animesh-datta-60770115b/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/abhishek.jpg" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Abhishek Singh</h4>
+                  <span>Deployment Head</span>
+                  <div class="social">
+                    <a href="mailto:abhishek.nitdgp.98@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/Abhish3kSunny"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/zer-0-ne/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--                                                                                                                       -->
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="{% static "jobsapp/img/sourav.JPG" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Sourav Nag</h4>
+                  <span>Designer</span>
+                  <div class="social">
+                    <a href="mailto:souravnag08042000@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/sourav.nag.1422"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/sourav-nag-8007b416a/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/khushi.JPG" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Khushi Bansal</h4>
+                  <span>Content Writer</span>
+                  <div class="social">
+                    <a href="mailto:khushi.khushisweety22@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/khushi.bansal.756"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/khushi-bansal-298849177/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/shalini.JPG" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Shalini Satapathy</h4>
+                  <span>Designer</span>
+                  <div class="social">
+                    <a href="mailto:satapathyshalini21@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/shalini.satapathy.14"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/shalini-satapathy-902136177/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="{% static "jobsapp/img/mohit.JPG" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Mohit Kochar</h4>
+                  <span>Web Developer</span>
+                  <div class="social">
+                    <a href="mailto:mohitkochar0203@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/mohit.kochar.12"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/mohit-kochar-2143aa179/"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section><!-- #team -->
+
+    <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>About Us</h3>
+          <center><a href="#intro" class="scrollto"><img class="sb-logo" src="{% static "jobsapp/img/sb_logo.png" %}" alt=""></a></center>
+
+          <p>The official IEEE Student Branch of National Institute of Technology Durgapur</p>
+        </header>
+
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <p>
+
+                IEEE SB NIT Durgapur is a society which aims to promote research related activities among the youth of the campus. The society as a group comprises of keen researchers, spellbinding speakers, creative designers and enthusiastic and hardworking members.
+
+            </p>
+
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fas fa-user-friends"></i></div>
+              <h4 class="title"><a href="">Who are we?</a></h4>
+              <p class="description">We are a direct handshake to IEEE, an international organization which every year gives innovative brains worldwide a chance to come forward with their ideas for societal change and present it to the world.</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fas fa-lightbulb"></i></div>
+              <h4 class="title"><a href="">What we do?</a></h4>
+              <p class="description">IEEE Student Branch organizes number of events that help students learn and innovate.The events includes seminars, workshops, Ideathons(which helps young minds help know how they can brainstorm innovative ideas and how to implement them realistically) etc.</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fas fa-award"></i></div>
+              <h4 class="title"><a href="">Why we do it?</a></h4>
+              <p class="description">We have always believed in the potential and power of young minds and thus encourages the students to aim for the stars. We plant the seeds of research enthusiasm in the green minds so they can nurture it into a fruitful tree. We believe knowledge is the key to revolution.</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <img src="{% static "jobsapp/img/about-img.svg" %}" class="img-fluid" alt="">
+          </div>
+        </div>
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="{% static "jobsapp/img/about-extra-1.svg" %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+            <h4>Technological Societies</h4>
+            <p>
+              Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
+            </p>
+            <p>
+              Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
+            </p>
+          </div>
+        </div>
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+            <img src="{% static "jobsapp/img/about-extra-2.svg" %}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+            <h4>Events, Seminars and Workshops</h4>
+            <p>
+             We conduct various events,workshops and seminars in NIT Durgapur which are very helpful for creating an environment for research based activities across the campus.
+            </p>
+            <p>
+              Some of our activities includes:
+              <ul>
+                <li>
+                  Demystifying the world of research
+                </li>
+                <li>
+                  Internship bootcamp
+                </li>
+                <li>
+                  Ideathon
+                </li>
+                <li>
+                  Self Driving Vehicle Workshop (SDV)
+                </li>
+                <li>
+                  MATLAB Mastery Course
+                </li>
+                <li>
+                  Art of Scientific Writing
+                </li>
+
+              </ul>
+
+            <p>
+              We will continue to do things which creates an active and developmental environment for all the <em>researchers</em>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+    <section id="contact">
+      <div class="container-fluid">
+
+        <div class="section-header">
+          <h3>Contact Us</h3>
+        </div>
+
+        <div class="row wow fadeInUp">
+
+          <div class="col-lg-6">
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=national%20institute%20of%20technology%2C%20durgapur&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-5 info">
+                <i class="ion-ios-location-outline"></i>
+                <p>Mahatma Gandhi Avenue,Durgapur, West Bengal, IN 713209</p>
+              </div>
+              <div class="col-md-4 info">
+                <i class="ion-ios-email-outline"></i>
+                <p>rportal.ieeesbnitdgp@gmail.com</p>
+              </div>
+              <div class="col-md-3 info">
+                <i class="ion-ios-telephone-outline"></i>
+                <p>+91 70645 55412</p>
+              </div>
+            </div>
+
+            <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Research Portal <br> NIT Durgapur</h3>
+            <p>This portal is developed and actively maintained by IEEE Student Branch NIT Durgapur. It caters all the fundamental needs of linking academia and students who wants to pursue research.</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              NIT Durgapur <br>
+              West Bengal, 713209<br>
+              India <br>
+              <strong>Phone:</strong> +91 12345 45678<br>
+              <strong>Email:</strong> ieeesb.nitdgp@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="http://ieeesbnitdgp.com/" class="globe"><i class="fa fa-globe"></i></a>
+              <a href="https://twitter.com/IEEESBNITD" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com/nitdgpieeesociety" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/ieeesb_nitdgp/" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/ieeesbnitdgp" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>To get all the latest and major updates about research activities and seminars, subscribe to our newsletter.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit"  value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>IEEE SB NIT Durgapur</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
+        -->
+        <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static "jobsapp/lib/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/jquery/jquery-migrate.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/easing/easing.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/mobile-nav/mobile-nav.js" %}"></script>
+  <script src="{% static "jobsapp/lib/wow/wow.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/waypoints/waypoints.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/counterup/counterup.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/owlcarousel/owl.carousel.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/isotope/isotope.pkgd.min.js" %}"></script>
+  <script src="{% static "jobsapp/lib/lightbox/js/lightbox.min.js" %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static "jobsapp/contactform/contactform.js" %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static "jobsapp/js/main.js" %}"></script>
+
+</body>
+</html>

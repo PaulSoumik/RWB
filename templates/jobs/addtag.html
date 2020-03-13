@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load is_already_applied %}
+{% block title %}
+    Job details
+{% endblock %}
+
+{% block content %}
+
+    <section class="bg-light-gray">
+        <div class="container">
+            <h1 class="heading">{{ job.title }}<br>
+                <small style="font-size: 50%;">at <button type="button" style="font-size: 27px;" class="btn btn-link" data-toggle="modal" data-target="#myModal"> {{ job.company_name }}</button></small>
+            </h1>
+            <div class="job-detail-description" style="font-size: 13px;"><i class="fa fa-map-marker job__location"> </i>
+                {{ job.location }} | Posted {{ job.created_at|timesince }} ago |
+                {% if job.type == '1' %}
+                    <span class="badge featured-badge badge-success">Full time</span>
+                {% elif job.type == '2' %}
+                    <span class="badge featured-badge badge-primary">Part time</span>
+                {% else %}
+                    <span style="color: #ffffff;" class="badge featured-badge badge-warning">Internship</span>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11">
+                    <div class="row" style="padding-top: 20px;">
+                    <h6 class="col-lg-4">Category: {{ job.category }}</h6>
+                    <h7 class="col-lg-4">Last date: {{ job.last_date|date }}</h7>
+                    <h7 class="text col-lg-4">Salary: Negotiable</h7>
+                    </div>
+                    <div class="row">
+                    <blockquote class="blockquote col-lg-8">
+                        <h5 class="" style="font-weight: bold;">{{ job.description }}</h5>
+                    </blockquote>
+                    <form method="post" action="{% url {% url 'jobs:jobs-detail' job.id %}">
+                    </form>
+                    </div>
+                </div>
+                
+                <div class="modal fade" id="myModal" style="background-color: #fff; margin: 0 auto; top: 50%;left: auto; transform: translateY(-50%) ; height: auto; width: 60%;">
+                    <div class="modal-dialog">
+                        <h4>About {{ job.company_name }}</h4>
+                        <p class="job-detail__company-description">{{ job.company_description }}</p>
+                        <p class="job-detail__social social social--outline">
+                          <a href="{{ job.website }}" data-toggle="tooltip" data-placement="top" title="Website"
+                               class="link">
+                                <i class="fa fa-link"></i>
+                            </a>
+                          <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter" class="twitter">
+                            <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook" class="facebook">
+                               <i class="fa fa-facebook"></i>
+                            </a>
+                        </p>
+                        <div class="job-detail__apply-top">
+                            {% if is_applied %}
+                                <input type="button" class="btn btn-outline-white-primary" value="Already applied"/>
+                            {% else %}
+                                <form action="{% url 'jobs:apply-job' job.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="job" value="{{ job.id }}">
+                                    <input type="submit" class="btn btn-outline-white-primary" value="Apply for this job"/>
+                                </form>
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

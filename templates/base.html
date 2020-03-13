@@ -1,0 +1,339 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>My Dashboard</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link rel="icon" type="image/png" href="{% static "jobsapp/img/portal_short.ico" %}">
+  <!-- Favicons -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static "jobsapp/lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static "jobsapp/lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/animate/animate.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/ionicons/css/ionicons.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet">
+  <link href="{% static "jobsapp/lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static "jobsapp/css/style.css" %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+<!-- NEW navbar-->
+<header id="header" class="fixed-top">
+  <div class="container">
+
+    <div class="logo float-left">
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+      <a href="{% url 'jobs:home-init' %}" class="scrollto"><img src="{% static "jobsapp/img/portal_logo_big3.png" %}" alt="" width="100" height="450"></a>
+    </div>
+
+    <nav class="main-nav float-right d-none d-lg-block">
+      <ul>
+        <li class="active"><a href="/home_initial">Home</a></li>
+
+        {% if request.user.is_authenticated and request.user.role == 'employer' %}
+            <li class="nav-item dropdown">
+                <a id="clientZone" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"
+                   class="nav-link dropdown-toggle has-img mb-3 mb-lg-0 mt-3 mt-lg-0">
+                    {% if request.user.role == 'employee' %}
+                        {{ request.user.first_name }} {{ request.user.last_name }}
+                    {% else %}
+                        {{ request.user.first_name }}
+                    {% endif %}
+                </a>
+                <div aria-labelledby="clientZone" class="dropdown-menu">
+                    <a href="{% url 'jobs:employer-dashboard' %}" class="dropdown-item">Dashboard</a>
+                    <a href="{% url 'jobs:employer-all-applicants' %}" class="dropdown-item">Applicants </a>
+                    <a href="{% url 'jobs:employer-jobs-create' %}" class="dropdown-item">Post a new
+                        job </a>
+                    <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
+                </div>
+            </li>
+        {% elif request.user.is_authenticated and request.user.role == 'employee' %}
+            <li class="nav-item dropdown">
+                <a id="clientZone" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"
+                   class="nav-link dropdown-toggle has-img mb-3 mb-lg-0 mt-3 mt-lg-0">
+                    {% if request.user.role == 'employee' %}
+                        {{ request.user.first_name }} {{ request.user.last_name }}
+                    {% else %}
+                        {{ request.user.first_name }}
+                    {% endif %}
+                </a>
+                <div aria-labelledby="clientZone" class="dropdown-menu">
+                    <a href="{% url 'accounts:employer-profile-update' %}" class="dropdown-item">Edit Profile</a>
+                    <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
+                </div>
+            </li>
+        {% else %}
+            <li class="nav-item dropdown">
+                <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   class="nav-link dropdown-toggle"><i class="fa fa-signing"></i>Register
+                </a>
+                <div aria-labelledby="pages" class="dropdown-menu">
+                    <a href="{% url 'accounts:employer-register' %}" class="dropdown-item">Faculty</a>
+                    <a href="{% url 'accounts:employee-register' %}" class="dropdown-item">Student</a>
+                </div>
+            </li>
+            <li class="nav-item" style="color: #fff">
+                <a href="{% url 'accounts:login' %}" class="btn navbar-btn btn-outline-light mb-5 mb-lg-0">
+                    <i class="fa fa-sign-in"></i>Login
+                </a>
+            </li>
+        {% endif %}
+
+        <li><a href="{% url 'jobs:home-init' %}" class="scrollto"><img style="margin-top: -10px" src="{% static "jobsapp/img/sb_logo.png" %}" alt="" width="90" height="40"></a></li>
+      </ul>
+    </nav><!-- .main-nav -->
+
+  </div>
+</header>
+
+
+
+<!-- OLD navbar-->
+<!--
+<header class="header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <img src="{% static 'img/logo-small.png' %}" alt="logo" class="d-none d-lg-block">
+                <span class="sr-only">Home</span>
+            </a>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars"></i>
+            </button>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                    {% if request.user.is_authenticated and request.user.role == 'employer' %}
+                        <li class="nav-item dropdown">
+                            <a id="clientZone" href="#" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"
+                               class="nav-link dropdown-toggle has-img mb-3 mb-lg-0 mt-3 mt-lg-0">
+                                <div class="client-menu-image">
+                                    <div class="inner">
+                                        <img src="{% static 'img/company-1.png' %}"
+                                             alt="company image"
+                                             class="img-fluid">
+                                    </div>
+                                </div>
+                                {% if request.user.role == 'employee' %}
+                                    {{ request.user.first_name }} {{ request.user.last_name }}
+                                {% else %}
+                                    {{ request.user.first_name }}
+                                {% endif %}
+                            </a>
+                            <div aria-labelledby="clientZone" class="dropdown-menu">
+                                <a href="{% url 'jobs:employer-dashboard' %}" class="dropdown-item">Dashboard</a>
+                                <a href="{% url 'jobs:employer-all-applicants' %}" class="dropdown-item">Applicants </a>
+                                <a href="{% url 'jobs:employer-jobs-create' %}" class="dropdown-item">Post a new
+                                    job </a>
+                                <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
+                            </div>
+                        </li>
+                    {% elif request.user.is_authenticated and request.user.role == 'employee' %}
+                        <li class="nav-item dropdown">
+                            <a id="clientZone" href="#" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"
+                               class="nav-link dropdown-toggle has-img mb-3 mb-lg-0 mt-3 mt-lg-0">
+                                <div class="client-menu-image">
+                                    <div class="inner">
+                                        <img src="{% static 'img/company-1.png' %}"
+                                             alt="company image"
+                                             class="img-fluid">
+                                    </div>
+                                </div>
+                                {% if request.user.role == 'employee' %}
+                                    {{ request.user.first_name }} {{ request.user.last_name }}
+                                {% else %}
+                                    {{ request.user.first_name }}
+                                {% endif %}
+                            </a>
+                            <div aria-labelledby="clientZone" class="dropdown-menu">
+                                <a href="{% url 'accounts:employer-profile-update' %}" class="dropdown-item">Edit Profile</a>
+                                <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                               class="nav-link dropdown-toggle"><i class="fa fa-signing"></i>Register
+                            </a>
+                            <div aria-labelledby="pages" class="dropdown-menu">
+                                <a href="{% url 'accounts:employee-register' %}" class="dropdown-item">Employee</a>
+                                <a href="{% url 'accounts:employer-register' %}" class="dropdown-item">Employers</a>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="color: #fff">
+                            <a href="{% url 'accounts:login' %}" class="btn navbar-btn btn-outline-light mb-5 mb-lg-0">
+                                <i class="fa fa-sign-in"></i>Login
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+-->
+
+<section id="about">
+  <div class="container">
+    <header class="section-header">
+      <p><br><br></p>
+      {% block content %} {% endblock %}
+    </header>
+
+  </div>
+</section><!-- #about -->
+
+
+
+
+
+
+
+
+<!--
+<div>
+    {% if messages %}
+
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+{#            <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+        {% endfor %}
+
+    {% endif %}
+
+</div>
+-->
+
+
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-info">
+          <h3>Research Portal <br> NIT Durgapur</h3>
+          <p>This portal is developed and actively maintained by IEEE Student Branch NIT Durgapur. It caters all the fundamental needs of linking academia and students who wants to pursue research.</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/home_initial">About us</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            NIT Durgapur <br>
+            West Bengal, 713209<br>
+            India <br>
+            <strong>Phone:</strong> +91 12345 45678<br>
+            <strong>Email:</strong> ieeesb.nitdgp@gmail.com<br>
+          </p>
+
+          <div class="social-links">
+            <a href="http://ieeesbnitdgp.com/" class="globe"><i class="fa fa-globe"></i></a>
+            <a href="https://twitter.com/IEEESBNITD" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.facebook.com/nitdgpieeesociety" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ieeesb_nitdgp/" class="instagram"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/ieeesbnitdgp" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>To get all the latest and major updates about research activities and seminars, subscribe to our newsletter.</p>
+          <form action="" method="post">
+            <input type="email" name="email"><input type="submit"  value="Subscribe">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="copyright">
+      &copy; Copyright <strong>IEEE SB NIT Durgapur</strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
+      -->
+      <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+    </div>
+  </div>
+</footer><!-- #footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!-- Uncomment below i you want to use a preloader -->
+<!-- <div id="preloader"></div> -->
+
+<!-- JavaScript Libraries -->
+<script src="{% static "jobsapp/lib/jquery/jquery.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/jquery/jquery-migrate.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/easing/easing.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/mobile-nav/mobile-nav.js" %}"></script>
+<script src="{% static "jobsapp/lib/wow/wow.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/waypoints/waypoints.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/counterup/counterup.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/owlcarousel/owl.carousel.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/isotope/isotope.pkgd.min.js" %}"></script>
+<script src="{% static "jobsapp/lib/lightbox/js/lightbox.min.js" %}"></script>
+<!-- Contact Form JavaScript File -->
+<script src="{% static "jobsapp/contactform/contactform.js" %}"></script>
+
+<!-- Template Main Javascript File -->
+<script src="{% static "jobsapp/js/main.js" %}"></script>
+
+
+</body>
+
+</html>

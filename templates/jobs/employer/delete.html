@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load is_already_applied %}
+{% block title %}
+    Job delete
+{% endblock %}
+
+{% block content %}
+
+
+
+<section class="row">
+	{% if userisactive %}
+	<h5 class="text">{{ job.title }} Deleted Successfully!</h5>
+	{% else %}
+	<h5 class="text">Please Log in first</h5>
+	{% endif %}
+</section>
+<div class="text">Go back to <a href="{% url 'jobs:employer-dashboard' %}" class="btn btn-link">Dashboard</a></div>
+
+
+{% endblock %}

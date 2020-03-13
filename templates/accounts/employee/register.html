@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block title %}
+    Employer Register
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-6 offset-3">
+        <div class="box">
+            <h3 class="heading">New Account</h3>
+            <p class="lead">Not registered yet?</p>
+            <p class="text-muted">If you have any questions, please feel free to <a href="#">contact us</a>, 24/7.</p>
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name == 'gender' %}
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="male gender"
+                                       value="male">
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="female"
+                                       value="female">
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="other"
+                                       value="Other">
+                                <label class="form-check-label" for="other">Other</label>
+                            </div>
+                        </div>
+                        {% if form.errors %}
+                            {% for error in field.errors %}
+                                {% if field.name == 'gender' %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    {% elif field.name == 'YearofStudy' %}
+                          <div class="form-group">
+                            <label for="YearofStudy">Year of Study</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="First YearofStudy"
+                                       value="First">
+                                <label class="form-check-label" for="male">First Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="Second"
+                                       value="female">
+                                <label class="form-check-label" for="female">Second Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="Third"
+                                       value="Third">
+                                <label class="form-check-label" for="Third">Third Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="Fourth"
+                                       value="Fourth">
+                                <label class="form-check-label" for="other">Final Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="M1st"
+                                       value="M1st">
+                                <label class="form-check-label" for="M1st">M.Tech First Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="Third"
+                                       value="M2nd">
+                                <label class="form-check-label" for="M2nd">M.Tech Second Year</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="YearofStudy" id="phd"
+                                       value="phd">
+                                <label class="form-check-label" for="other">PHD</label>
+                            </div>
+                        </div>
+
+                        {% if form.errors %}
+                            {% for error in field.errors %}
+                                {% if field.name == 'YearofStudy' %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    {% elif field.name == 'Dept' %}
+                    <label for="Dept">Department</label>
+                        <select name="Dept" size="1" single style="margin-left: 10px;">
+                            <option value="ee">Electrical</option>
+                            <option value="cse">CSE</option>
+                            <option value="ece">ECE</option>
+                            <option value="ce">CE</option>
+                        </select>
+                        {% if form.errors %}
+                            {% for error in field.errors %}
+                                {% if field.name == 'Dept' %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    {% else %}
+
+                        <div class="form-group">
+                            <label for="id_{{ field.name }}">{{ field.label }}</label>
+                            <input type="{{ field.field.widget.input_type }}"
+                                   class="form-control"
+                                   name="{{ field.name }}"
+                                   id="id_{{ field.name }}"
+                                   placeholder="{{ field.field.widget.attrs.placeholder }}">
+                        </div>
+                        {% if form.errors %}
+                            {% for error in field.errors %}
+                                {% if field.name == field.name %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
